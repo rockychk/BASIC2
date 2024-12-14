@@ -25,18 +25,26 @@
 
 </head>
 <body>
-  
+
+
   <!-- Frame Cover -->
 <div class="frame frame-cover" id="frame-cover">
+  <img src="bunga-top.png" alt="Top Flowers" class="top-image">   
+  <div>
+      <h4 class="transisi transisi-atas" style="font-family: Redressed; font-size: 3vh; color: rgb(104, 53, 53); padding-top: 50px;">the Wedding</h4>
+      <h1 class="transisi transisi-kanan" style="font-family: Redressed; font-size: 5vh; color: rgb(114, 20, 20);">Faisal & Tasya</h1>
+      <p class="transisi transisi-bawah" style="font-family: Redressed; font-size: 2vh; color: rgb(128, 39, 39);">Jumat, 27 September 2024</p>
+  </div>
   
   <div class="tombolcover">
-      <h3 class="transisi transisi-bawah" style="font-size: 12px; color: #915f3e; ">Kepada Yth<br>Bapak/Ibu/Saudara/i</h3>
-      <h2 id="recipient-name" class="transisi transisi-bawah" style="background-color: rgba(255, 255, 255, 0,5); border-radius: 15px; padding: 10px; font-size: 18px; color:#915f3e; margin-bottom: 0px; "></h2>
+      <h3 class="transisi transisi-bawah" style="font-size: 2vh; color: #915f3e; ">Kepada Yth<br>Bapak/Ibu/Saudara/i</h3>
+      <h2 id="recipient-name" class="transisi transisi-bawah" style="background-color: rgba(255, 255, 255, 0,5); border-radius: 3vh; padding: 10px; font-size: 18px; color:#915f3e; margin-bottom: 0px; "></h2>
       <button id="open-music-btn" class="btn btn-dark mt-3 transisi transisi-atas" onclick="showFrame1()"><i class="fas fa-envelope-open" style="font-size: 14px;"> </i>  Buka Undangan</button>
       <p><p>
       <h5 style="font-size: 12px; color:#915f3e; margin-top: 0px;">Mohon maaf bila salah penulisan nama/gelar</h5>
       <p></p>
   </div>
+      <img src="bunga-bottom.png" alt="Bottom Flowers" class="bottom-image">
 </div>
 
 
@@ -54,9 +62,9 @@
   <div class="frame frame-3" id="frame-3">
     <img src="bunga-top.png" alt="Top Flowers" >   
     <div>
-      <div class="transisi transisi-atas" style="font-family: Arial Narrow; font-size: 2.5vh;">
+      <div class="transisi transisi-atas" style="font-family: Arial Narrow;">
         <img src="bismillah.png" style="width: 80% ;"><br/>
-          <b>Assalamu'alaikum Warahmatullahi Wabarakatuh</b><br/>
+          <h5><b>Assalamu'alaikum Warahmatullahi Wabarakatuh</b></h5><br/>
           Dengan memohon Ridho serta Rahmat Allah SWT, kami bermaksud menyelenggarakan Resepsi Pernikahan putra-putri kami:<br/>
       </div>
       <img class="transisi transisi-kiri" src="wanita.png" alt="Groom" style="width: 90%; padding-top: 20px;">
@@ -146,7 +154,9 @@
     <img src="bunga-top.png" alt="Top Flowers" >   
     <center><h2 class="transisi transisi-bawah" style="font-family: Redressed; ">Moment Gallery</h2></center><br/>
     <div class="moment">
+      <div class="transisi transisi-bawah">
       <div class="foto lebar" onclick="showImage(0)"><img src="image/pre1.jpg"></div>
+      </div>
       <div class="foto panjang" onclick="showImage(1)"><img src="image/pre2.jpg"></div>
       <div class="foto large" onclick="showImage(2)"><img src="image/pre3.jpg"></div>
       <div class="foto lebar" onclick="showImage(4)"><img src="image/pre5.jpg"></div>
@@ -239,7 +249,7 @@
       </div>
       <button type="submit" class="btn btn-dark btn-block">Kirim</button>
     </form>
-    <div class="ucapan" id="ucapan"></div>
+    <div class="ucapan-container" id="ucapan"></div>
     <div id="respon" ></div> <!-- Untuk menampilkan status respon -->
     
     <img src="bunga-bottom.png" alt="Bottom Flowers">
@@ -248,8 +258,7 @@
   <!-- Frame 2 -->
   <div class="frame frame-2" id="frame-2">
     <img src="bunga-top.png" alt="Top Flowers" > 
-
-     
+  
     <div class="dandiantara">
       <br class="transisi transisi-atas"><b><u>Turut Mengundang:</u></b>
       <br class="transisi transisi-kiri">Keluarga Sanudi
@@ -261,26 +270,22 @@
     </div>
 
     <img src="bunga-bottom.png" alt="Bottom Flowers">
+
+    
+  <footer>
+    <a href="https://wa.me/+6289609745090?text=Hai%20Admin,%20Saya%20ingin%20pesan%20Undangan%20Digital" style="color: #ffffff;"><img src="https://img.icons8.com/?size=20&id=uZWiLUyryScN&format=png&color=000000" />
+      Pesan Undangan Digital Sekarang!
+    </a>
+  </footer>
   </div>
 
+  <button id="music-control" class="tombolmusik hidden">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#915f3e" class="bi bi-pause-circle-fill" viewBox="0 0 16 16">
+      <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M6.25 5C5.56 5 5 5.56 5 6.25v3.5a1.25 1.25 0 1 0 2.5 0v-3.5C7.5 5.56 6.94 5 6.25 5m3.5 0c-.69 0-1.25.56-1.25 1.25v3.5a1.25 1.25 0 1 0 2.5 0v-3.5C11 5.56 10.44 5 9.75 5"/>
+    </svg>
+  </button>
+    <audio id="background-music" src="backsound.mp3"></audio>
 
-
-    <!-- HAPUS UCAPAN / DOA / KOMENTAR
-      <button onclick="hapusSemuaItem()">Hapus Semua Ucapan</button>
-    -->
-
-    <footer>
-      <a href="https://wa.me/+6289609745090?text=Hai%20Admin,%20Saya%20ingin%20pesan%20Undangan%20Digital" style="color: #ffffff;"><img src="https://img.icons8.com/?size=20&id=uZWiLUyryScN&format=png&color=000000" />
-        Pesan Undangan Digital Sekarang!
-      </a>
-    </footer>
-  
-    <button id="music-control" class="hidden tombolmusik">
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#915f3e" class="bi bi-pause-circle-fill" viewBox="0 0 16 16">
-        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M6.25 5C5.56 5 5 5.56 5 6.25v3.5a1.25 1.25 0 1 0 2.5 0v-3.5C7.5 5.56 6.94 5 6.25 5m3.5 0c-.69 0-1.25.56-1.25 1.25v3.5a1.25 1.25 0 1 0 2.5 0v-3.5C11 5.56 10.44 5 9.75 5"/>
-      </svg>
-    </button>
-      <audio id="background-music" src="backsound.mp3"></audio>
 
   <script src="script.js"></script>
   

@@ -61,6 +61,8 @@ document.addEventListener('DOMContentLoaded', () => {
       frame2.style.display = 'flex';
       frame3.style.display = 'flex';
       frame4.style.display = 'flex';
+      frame5.style.display = 'flex';
+      frame6.style.display = 'flex';
       frame7.style.display = 'flex';
 
       document.body.style.overflow = 'auto';
@@ -72,29 +74,13 @@ document.addEventListener('DOMContentLoaded', () => {
   musicControl.addEventListener('click', () => {
       if (backgroundMusic.paused) {
           backgroundMusic.play();
-          musicControl.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" class="bi bi-pause-circle-fill" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M6.25 5C5.56 5 5 5.56 5 6.25v3.5a1.25 1.25 0 1 0 2.5 0v-3.5C7.5 5.56 6.94 5 6.25 5m3.5 0c-.69 0-1.25.56-1.25 1.25v3.5a1.25 1.25 0 1 0 2.5 0v-3.5C11 5.56 10.44 5 9.75 5"/></svg>';
+          musicControl.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#915f3e" class="bi bi-pause-circle-fill" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M6.25 5C5.56 5 5 5.56 5 6.25v3.5a1.25 1.25 0 1 0 2.5 0v-3.5C7.5 5.56 6.94 5 6.25 5m3.5 0c-.69 0-1.25.56-1.25 1.25v3.5a1.25 1.25 0 1 0 2.5 0v-3.5C11 5.56 10.44 5 9.75 5"/></svg>';
         } else {
           backgroundMusic.pause();
-          musicControl.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" class="bi bi-play-circle-fill" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814z"/></svg>';
+          musicControl.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#915f3e" class="bi bi-play-circle-fill" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814z"/></svg>';
       }
   });
 });
-
-document.getElementById('open-music-btn').addEventListener('click', function() {
-  var frame1 = document.getElementById('frame-cover');
-  var frame2 = document.getElementById('frame-1');
-
-  frame1.classList.add('hiddentrans');
-  frame2.classList.remove('hiddentrans');
-  frame2.classList.add('visible');
-});
-
-        // Fungsi untuk menghapus UCAPAN / DOA / KOMENTAR
-      //  function hapusSemuaItem() {
-      //    localStorage.clear();
-      //    alert('Semua item di localStorage telah dihapus.');
-      //  }
-
 
       // EFEK TRANSISI TEKS ATAS BAWAH KANAN KIRI
       document.addEventListener('DOMContentLoaded', function () {
@@ -135,7 +121,8 @@ function kecil() {
 }
 
 
-//AWAL UCAPAN//
+
+// AWAL UCAPAN //
 
 document.addEventListener('DOMContentLoaded', function() {
   fetchUcapan(); // Memanggil fungsi untuk mengambil semua data ucapan saat halaman dimuat
@@ -143,12 +130,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Fungsi untuk mengambil semua data ucapan dari Google Sheets
 function fetchUcapan() {
-
   var url = 'https://script.google.com/macros/s/AKfycbxG8lADguQ9oUeckmkaLcHraGKvhBFf2jnyXry3o-_fvwzwGgjxNY_q9RWR2jZ0b18N/exec'; // Ganti dengan URL Web App Google Apps Script Anda
-
+  
   fetch(url)
     .then(response => response.json())
     .then(data => {
+      // Urutkan data berdasarkan waktu (misalnya kolom waktu ada di data[i][0])
+      data.sort((a, b) => new Date(b.waktu) - new Date(a.waktu)); // Mengurutkan berdasarkan waktu, terbaru di atas
       displayAllUcapan(data); // Tampilkan semua ucapan yang diterima di halaman
       document.getElementById('spinner').style.display = 'none'; // Sembunyikan spinner setelah data dimuat
     })
@@ -160,14 +148,24 @@ function fetchUcapan() {
 
 // Fungsi untuk menampilkan semua ucapan di halaman
 function displayAllUcapan(ucapanData) {
-  window.ucapanData = ucapanData; // Simpan data ucapan untuk pemeriksaan nama
-  var ucapanContainer = document.getElementById('ucapan');
-  ucapanContainer.innerHTML = ''; // Kosongkan isi sebelumnya
+  const ucapanContainer = document.getElementById('ucapan');
+  ucapanContainer.innerHTML = '';
 
-  ucapanData.forEach(function(ucapan) {
-    var ucapanItem = document.createElement('div');
+  ucapanData.forEach(ucapan => {
+    const ucapanItem = document.createElement('div');
     ucapanItem.classList.add('ucapan-item');
-    ucapanItem.innerHTML = `<strong>${ucapan.nama} (${ucapan.kehadiran}):</strong><p>${ucapan.pesan}</p>`;
+
+      // Format tanggal dan waktu
+      const waktu = new Date(ucapan.waktu);
+      const tanggal = waktu.toLocaleDateString(); // Menampilkan tanggal
+      const jam = waktu.toLocaleTimeString(); // Menampilkan waktu
+
+      ucapanItem.innerHTML = `
+      <small><em>${tanggal} : ${jam}</em></small><br/> <!-- Menampilkan waktu -->
+      <strong>${ucapan.nama} (${ucapan.kehadiran}):<br/></strong>
+      <p>${ucapan.pesan}</p>
+      <hr>
+      `;
     ucapanContainer.appendChild(ucapanItem);
   });
 }
@@ -176,123 +174,41 @@ function displayAllUcapan(ucapanData) {
 document.getElementById('formPernikahan').addEventListener('submit', function(event) {
   event.preventDefault(); // Mencegah form submit biasa
 
-  var nama = document.getElementById('nama').value;
-  var kehadiran = document.getElementById('kehadiran').value;
-  var pesan = document.getElementById('pesan').value;
-
-  // Menampilkan spinner sebelum kirim data
+  // Tampilkan Spinner saat form sedang diproses
   document.getElementById('spinner').style.display = 'block';
 
-  // Cek apakah nama sudah ada
-  var isNamaExist = window.ucapanData.some(function(ucapan) {
-    return ucapan.nama.toLowerCase() === nama.toLowerCase(); // Membandingkan nama tanpa memperhatikan huruf besar/kecil
-  });
+  const nama = document.getElementById('nama').value;
+  const kehadiran = document.getElementById('kehadiran').value;
+  const pesan = document.getElementById('pesan').value;
 
-  if (isNamaExist) {
-    showAlert("Namamu sudah ada. <br/> Coba gunakan nama lain");
-    document.getElementById('spinner').style.display = 'none'; // Sembunyikan spinner jika nama sudah ada
-    return; // Hentikan pengiriman data jika nama sudah ada
-  }
-
-  var url = 'https://script.google.com/macros/s/AKfycbxG8lADguQ9oUeckmkaLcHraGKvhBFf2jnyXry3o-_fvwzwGgjxNY_q9RWR2jZ0b18N/exec'; // Ganti dengan URL Web App
-
-  fetch(url, {
+  fetch('https://script.google.com/macros/s/AKfycbxG8lADguQ9oUeckmkaLcHraGKvhBFf2jnyXry3o-_fvwzwGgjxNY_q9RWR2jZ0b18N/exec', {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
-    },
-    body: new URLSearchParams({
-      'nama': nama,
-      'kehadiran': kehadiran,
-      'pesan': pesan
-    })
+    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+    body: new URLSearchParams({ 'nama': nama, 'kehadiran': kehadiran, 'pesan': pesan })
   })
   .then(response => response.text())
-  .then(text => {
-    document.getElementById('respon').innerHTML = 'Terima kasih atas doa dan ucapannya. <br/> Halaman akan refresh otomatis';
-
-    // Menambahkan style agar tampil seperti alert melayang
-    var responElement = document.getElementById('respon');
-
-    responElement.style.position = 'fixed';
-    responElement.style.bottom = '50%';
-    responElement.style.left = '50%';
-    responElement.style.transform = 'translateX(-50%)';
-    responElement.style.padding = '10px 10px';
-    responElement.style.backgroundColor = 'rgba(0, 138, 140, 0.8)';
-    responElement.style.color = 'rgba(255, 255, 255, 1)';
-    responElement.style.borderRadius = '15px';
-    responElement.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
-    responElement.style.fontSize = '16px';
-    responElement.style.textAlign = 'center';
-    responElement.style.zIndex = '1000';
-    // Mengatur lebar responsif
-    responElement.style.width = '60%';         // Lebar otomatis
-    responElement.style.maxWidth = '60%';     // Maksimal lebar 600px
-    responElement.style.minWidth = '200px';     // Lebar minimal 200px
- 
-    // Hapus respon setelah 3 detik
-    setTimeout(function() {
-      respon.remove();
-    }, 5000);
-    
+  .then(() => {
     document.getElementById('spinner').style.display = 'none';
+    document.getElementById('formPernikahan').reset();
+    displayAlert("Ucapan terkirim!");
 
-    // Tambahkan ucapan baru ke tampilan
-    var ucapanContainer = document.getElementById('ucapan');
-    var ucapanItem = document.createElement('div');
-    ucapanItem.classList.add('ucapan-item');
-    ucapanItem.innerHTML = `<strong>${nama} (${kehadiran}):</strong><p>${pesan}</p>`;
-    ucapanContainer.prepend(ucapanItem); // Menambahkan ke atas daftar
-
-    document.getElementById('formPernikahan').reset(); // Reset form setelah kirim
-
-    // Memberikan delay 2 detik dan refresh halaman
-    setTimeout(function() {
-      window.location.reload(); // Halaman akan direfresh setelah data terkirim
-    }, 5000); // Delay 5 detik sebelum refresh
-
+    fetchUcapan();
   })
-  .catch(error => {
+  .catch(() => {
     document.getElementById('respon').innerHTML = 'Terjadi kesalahan, coba lagi nanti.';
-    document.getElementById('spinner').style.display = 'none'; // Sembunyikan spinner jika terjadi error
-
-    console.error('Error:', error);
+    document.getElementById('spinner').style.display = 'none';
   });
 });
 
-// Fungsi untuk menampilkan alert melayang
-function showAlert(message) {
-  var alertBox = document.createElement('div');
-  alertBox.innerHTML = message; // Gunakan innerHTML agar HTML ditampilkan
-
-  alertBox.style.position = 'fixed';
-  alertBox.style.bottom = '50%';
-  alertBox.style.left = '50%';
-  alertBox.style.transform = 'translateX(-50%)';
-  alertBox.style.padding = '10px 10px';
-  alertBox.style.backgroundColor = 'rgba(0, 138, 140, 0.8)';
-  alertBox.style.color = 'rgba(255, 255, 255, 1)';
-  alertBox.style.borderRadius = '15px';
-  alertBox.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
-  alertBox.style.fontSize = '16px';
-  alertBox.style.textAlign = 'center';
-  alertBox.style.zIndex = '1000';
-  // Mengatur lebar responsif
-  alertBox.style.width = '60%';         // Lebar otomatis
-  alertBox.style.maxWidth = '60%';     // Maksimal lebar 600px
-  alertBox.style.minWidth = '200px';     // Lebar minimal 200px
-
-  // Menambahkan alert ke body
+function displayAlert(message) {
+  const alertBox = document.createElement('div');
+  alertBox.classList.add('alert-box');
+  alertBox.innerHTML = message;
   document.body.appendChild(alertBox);
-
-  // Hapus alert setelah 3 detik
-  setTimeout(function() {
-    alertBox.remove();
-  }, 3000);
+  setTimeout(() => alertBox.remove(), 3000);
 }
 
-//AKHIR UCAPAN//
+// AKHIR UCAPAN //
 
 
 const images = [
