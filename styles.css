@@ -120,7 +120,6 @@ background-color: rgb(185, 156, 87); /* Warna latar belakang saat hover */
 }
 
 .frame-2 {
-  
   background-color: #dcd2d0;
   display: flex;
   color: #915f3e;
@@ -128,6 +127,7 @@ background-color: rgb(185, 156, 87); /* Warna latar belakang saat hover */
   justify-content: center;
   align-items: center;
   text-align: center;
+  margin-top: -20px
   padding-left: 30px;
   padding-right: 30px;
 }
