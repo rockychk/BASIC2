@@ -12,9 +12,6 @@ body, html {
   min-height: 100vh;
   left: 50%;
   transform: translateX(-50%);
-  background-image: url('bgasliblur.jpg');
-  background-size: cover;
-  background-position: center;
   color: rgb(15, 15, 15);
   overflow: hidden;
   transition: opacity 1s, transform 1s;
@@ -24,7 +21,9 @@ body, html {
 
 
 .frame-cover {
-  background-color: rgb(223, 250, 72);
+  background-image: url('image/u2.jpg');
+  background-size: cover;
+  background-position: center;
   text-align: center;
   padding: 5% ; /* Menggunakan persen untuk padding */
   position: absolute; /* Agar frame-cover bisa bergerak di atas frame-1 */
@@ -101,6 +100,9 @@ background-color: rgb(185, 156, 87); /* Warna latar belakang saat hover */
 }
 
 .frame-1 {
+  background-image: url(image/bgr2.jpg);
+  background-size: cover;
+  background-position: center;
   display: flex;
   color: #915f3e;
   flex-direction: column;
@@ -118,6 +120,8 @@ background-color: rgb(185, 156, 87); /* Warna latar belakang saat hover */
 }
 
 .frame-2 {
+  
+  background-color: #dcd2d0;
   display: flex;
   color: #915f3e;
   flex-direction: column;
@@ -129,12 +133,17 @@ background-color: rgb(185, 156, 87); /* Warna latar belakang saat hover */
 }
 
 .frame-3 {
+  background-image: url(image/u3.jpg);
+  background-size: cover;
+  background-position: center;
   display: flex;
   color: #915f3e;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
+  padding-top: 50px;
+  padding-bottom: 50px;
   padding-left: 20px;
   padding-right: 20px;
 }
@@ -145,6 +154,7 @@ background-color: rgb(185, 156, 87); /* Warna latar belakang saat hover */
 
 .frame-4 {
   display: flex;
+  background-color: #dcd2d0;
   color: #915f3e;
   flex-direction: column;
   justify-content: center;
@@ -179,6 +189,7 @@ background-color: rgb(185, 156, 87); /* Warna latar belakang saat hover */
 }
 
 .frame-5 {
+  background-color: #dcd2d0;
   display: flex;
   color: #915f3e;
   flex-direction: column;
@@ -297,6 +308,7 @@ background-color:  rgba(82, 82, 82, 0.8);
 }
 
 .frame-6 {
+  background-color: #dcd2d0;
   color: #915f3e;
   display: flex;
   flex-direction: column;
@@ -305,6 +317,7 @@ background-color:  rgba(82, 82, 82, 0.8);
 }
 
 .frame-7 {
+  background-color: #dcd2d0;
   color: #915f3e;
   display: flex;
   flex-direction: column;
@@ -398,10 +411,6 @@ text-align: left;
 text-align: right;
 }
 
-
-
-
-
 button {
 padding: 10px 20px;
 font-size: 16px;
@@ -425,7 +434,7 @@ pointer-events: auto;
 
 .tombolmusik{
   width: 100%;
-  top: 10px;
+  bottom: 20px;
   z-index: 9990;  /* Pastikan tombol muncul di atas elemen lain */
 }
 
@@ -435,7 +444,6 @@ pointer-events: auto;
   background-color: rgba(255, 255, 255, 0);
   border-radius: 100%;
   border: none;
-  cursor: pointer;
 }
 
 

@@ -7,7 +7,7 @@
   
     // Countdown function
     function countdown() {
-      const countDate = new Date("September 29, 2024 19:00:00").getTime();
+      const countDate = new Date("January 26, 2025 19:00:00").getTime();
       const now = new Date().getTime();
       const gap = countDate - now;
   
@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Fungsi untuk mengambil semua data ucapan dari Google Sheets
 function fetchUcapan() {
-  var url = 'https://script.google.com/macros/s/AKfycbxG8lADguQ9oUeckmkaLcHraGKvhBFf2jnyXry3o-_fvwzwGgjxNY_q9RWR2jZ0b18N/exec'; // Ganti dengan URL Web App Google Apps Script Anda
+  var url = 'https://script.google.com/macros/s/AKfycbwv4b72o_t-DkLvZ9sO5cwPwqNsxWdxx4LuNCHZsqU5ZmDEVVu7fMhB9rIXjGlwioPuCw/exec'; // Ganti dengan URL Web App Google Apps Script Anda
   
   fetch(url)
     .then(response => response.json())
@@ -181,7 +181,7 @@ document.getElementById('formPernikahan').addEventListener('submit', function(ev
   const kehadiran = document.getElementById('kehadiran').value;
   const pesan = document.getElementById('pesan').value;
 
-  fetch('https://script.google.com/macros/s/AKfycbxG8lADguQ9oUeckmkaLcHraGKvhBFf2jnyXry3o-_fvwzwGgjxNY_q9RWR2jZ0b18N/exec', {
+  fetch('https://script.google.com/macros/s/AKfycbwv4b72o_t-DkLvZ9sO5cwPwqNsxWdxx4LuNCHZsqU5ZmDEVVu7fMhB9rIXjGlwioPuCw/exec', {
     method: 'POST',
     headers: {'Content-Type': 'application/x-www-form-urlencoded'},
     body: new URLSearchParams({ 'nama': nama, 'kehadiran': kehadiran, 'pesan': pesan })
@@ -212,20 +212,14 @@ function displayAlert(message) {
 
 
 const images = [
-  './image/pre1.jpg',
-  './image/pre2.jpg',
-  './image/pre3.jpg',
-  './image/pre4.jpg',
-  './image/pre5.jpg',
-  './image/pre6.jpg',
-  './image/pre7.jpg',
-  './image/pre8.jpg',
-  './image/pre9.jpg',
-  './image/pre10.jpg',
-  './image/pre11.jpg',
-  './image/pre12.jpg',
-  './image/pre13.jpg',
-  './image/pre14.jpg',
+  './image/u3a.jpg',
+  './image/u2.jpg',
+  './image/u8.jpg',
+  './image/u1.jpg',
+  './image/u4.jpg',
+  './image/u10.jpg',
+  './image/u9.jpg',
+  './image/u5.jpg',
 ];
 
 let currentIndex = 0;
